@@ -1,6 +1,6 @@
 /*
 Task 4
-Decimal to Binary/Octal/Hex Conversion
+Diff between even & odd elements
 
 */
 
