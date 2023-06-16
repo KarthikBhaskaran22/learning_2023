@@ -15,39 +15,43 @@ Concepts to be used.
 
 #include <stdio.h>
 
-void printPattern(int n)
+void decreasing(int n)
 {
-   int i, j;
-
-   for (i = 0; i < n; i++)
+   for (int i = n; i >= 1; i--)
    {
-      for (j = 1; j <= n - i; j++)
-      {
-         printf("%d", j);
-      }
+      printf("%d", i);
+   }
+}
 
-      for (j = 1; j < 2 * i; j++)
-      {
-         printf(" ");
-      }
+void spaces(int n)
+{
+   for (int i = 1; i <= n; i++)
+   {
+      printf(" ");
+   }
+}
 
-      for (j = n - i; j >= 1; j--)
-      {
-         printf("%d", j);
-      }
-
-      printf("\n");
+void increasing(int n)
+{
+   for (int i = 1; i <= n; i++)
+   {
+      printf("%d", i);
    }
 }
 
 int main()
 {
    int n;
-
    printf("Enter the value of n: ");
    scanf("%d", &n);
 
-   printPattern(n);
+   for (int i = n; i >= 1; i--)
+   {
+      increasing(i);
+      spaces((n - i) * 2);
+      decreasing(i);
+      printf("\n");
+   }
 
    return 0;
 }
