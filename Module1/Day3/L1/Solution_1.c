@@ -15,12 +15,9 @@ Concepts to be used.
 
 #include <stdio.h>
 
-int main()
+void printPattern(int n)
 {
-   int n, i, j;
-
-   printf("Enter the value of n: ");
-   scanf("%d", &n);
+   int i, j;
 
    for (i = 0; i < n; i++)
    {
@@ -41,6 +38,16 @@ int main()
 
       printf("\n");
    }
+}
+
+int main()
+{
+   int n;
+
+   printf("Enter the value of n: ");
+   scanf("%d", &n);
+
+   printPattern(n);
 
    return 0;
 }
