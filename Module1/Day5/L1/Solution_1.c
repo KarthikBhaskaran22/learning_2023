@@ -68,3 +68,29 @@ int main()
 
    return 0;
 }
+
+
+/*
+
+Sample output
+
+Enter the dimensions of the box:
+Length: 5
+Width: 3
+Height: 4
+
+Using (*) and (.) operators:
+Length: 5.00
+Width: 3.00
+Height: 4.00
+Volume: 60.00
+Surface Area: 94.00
+
+Using (->) operator:
+Length: 5.00
+Width: 3.00
+Height: 4.00
+Volume: 60.00
+Surface Area: 94.00
+
+*/
