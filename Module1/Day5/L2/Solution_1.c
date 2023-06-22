@@ -1,90 +1,58 @@
 /*
 Task 1
-Write a program to demonstrate the swapping the fields of two structures using pointers
+Data Parser:
+   A data logger transmits the data in ascii format as shown below
+   "S1-T:36.5-H:100-L:50"
+   Write a function to populate all the data in an array of structure. The output should be like
+   Sensor Info:
+   ---------------------
+   Sensor ID: S1
+   Temperature: 36.5 C
+   Humidity: 100
+   Light Intensity: 50%
+   ---------------------
 
 */
 
 #include <stdio.h>
 #include <string.h>
 
-// Structure definition
-struct Student
-{
-   char name[50];
-   float GPA;
-};
+#define MAX_DATA_LENGTH 100
 
-// Swap the fields of two structures
-void swap(struct Student *s1, struct Student *s2)
-{
-   struct Student temp;
-   strcpy(temp.name, s1->name);
-   temp.GPA = s1->GPA;
+// Structure
+typedef struct {
+    char sensorID[10];
+    float temperature;
+    int humidity;
+    int lightIntensity;
+} SensorData;
 
-   strcpy(s1->name, s2->name);
-   s1->GPA = s2->GPA;
 
-   strcpy(s2->name, temp.name);
-   s2->GPA = temp.GPA;
+// Function definition
+void parseData(const char *data, SensorData *sensor) {
+    sscanf(data, "%9[^-]-T:%f-H:%d-L:%d", sensor->sensorID, &(sensor->temperature), &(sensor->humidity), &(sensor->lightIntensity));
 }
 
-int main()
-{
-   // Create two Student structures
-   struct Student student1, student2;
+int main() {
+    char data[MAX_DATA_LENGTH];
+    SensorData sensor;
 
-   // Read student1 data
-   printf("Enter details of student1:\n");
-   printf("Name: ");
-   fgets(student1.name, sizeof(student1.name), stdin);
-   student1.name[strcspn(student1.name, "\n")] = '\0'; // Remove newline character
-   printf("GPA: ");
-   scanf("%f", &student1.GPA);
-   getchar(); // Clearing the newline character from input buffer
+    // Read user data
+    printf("Enter sensor data: ");
+    fgets(data, MAX_DATA_LENGTH, stdin);
+    data[strcspn(data, "\n")] = '\0';
 
-   // Read student 2 data
-   printf("\nEnter details of student2:\n");
-   printf("Name: ");
-   fgets(student2.name, sizeof(student2.name), stdin);
-   student2.name[strcspn(student2.name, "\n")] = '\0';
-   printf("GPA: ");
-   scanf("%f", &student2.GPA);
+    // Function call for parse the data
+    parseData(data, &sensor);
 
-   // Print the initial details
-   printf("\nInitial details:\n");
-   printf("Student1: Name = %s, GPA = %.2f\n", student1.name, student1.GPA);
-   printf("Student2: Name = %s, GPA = %.2f\n", student2.name, student2.GPA);
+    // Print the sensor information
+    printf("Sensor Info:\n");
+    printf("---------------------\n");
+    printf("Sensor ID: %s\n", sensor.sensorID);
+    printf("Temperature: %.1f C\n", sensor.temperature);
+    printf("Humidity: %d\n", sensor.humidity);
+    printf("Light Intensity: %d%%\n", sensor.lightIntensity);
+    printf("---------------------\n");
 
-   // Swapping students
-   swap(&student1, &student2);
-
-   // Print the swapped details
-   printf("\nAfter swapping:\n");
-   printf("Student1: Name = %s, GPA = %.2f\n", student1.name, student1.GPA);
-   printf("Student2: Name = %s, GPA = %.2f\n", student2.name, student2.GPA);
-
-   return 0;
+    return 0;
 }
-
-
-/*
-
-Sample output
-
-Enter details of student1:
-Name: Karthik Bhaskaran
-GPA: 8.16
-
-Enter details of student2:
-Name: abc xyz
-GPA: 9.9
-
-Initial details:
-Student1: Name = Karthik Bhaskaran, GPA = 8.16
-Student2: Name = abc xyz, GPA = 9.90
-
-After swapping:
-Student1: Name = abc xyz, GPA = 9.90
-Student2: Name = Karthik Bhaskaran, GPA = 8.16
-
-*/
