@@ -181,7 +181,7 @@ Date: 02-06-2023
 Time: 18:12:55
 Light: 40
 Temperature: 46
-Humidity: 89
+Humidity: 99
 EntryNo 18 updated successfully.
 
 data.csv
@@ -189,7 +189,7 @@ Before update
 18,S1,01-06-2023,00:01:25,39,20,41
 
 After update
-18,S2,02-06-2023,18:12:55,40,46,89
+18,S2,02-06-2023,18:12:55,40,46,99
 
 ---------------------------------------------------------
 
