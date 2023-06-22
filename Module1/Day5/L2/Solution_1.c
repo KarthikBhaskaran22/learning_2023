@@ -38,7 +38,7 @@ int main() {
     SensorData sensor;
 
     // Read user data
-    printf("Enter sensor data: ");
+    printf("Enter sensor data: ");   // S1-T:36.5-H:100-L:50
     fgets(data, MAX_DATA_LENGTH, stdin);
     data[strcspn(data, "\n")] = '\0';
 
@@ -56,3 +56,29 @@ int main() {
 
     return 0;
 }
+
+
+/*
+
+Sample output
+
+Enter sensor data: S1-T:36.5-H:100-L:50
+Sensor Info:
+---------------------
+Sensor ID: S1
+Temperature: 36.5 C
+Humidity: 100
+Light Intensity: 50%
+---------------------
+
+
+Enter sensor data: S2-T:40.9-H:90-L:100
+Sensor Info:
+---------------------
+Sensor ID: S2
+Temperature: 40.9 C
+Humidity: 90
+Light Intensity: 100%
+---------------------
+
+*/
